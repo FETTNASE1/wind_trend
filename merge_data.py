@@ -2,10 +2,10 @@
 import xarray as xr
 
 # load ncdf file to xarray
-ds = xr.open_mfdataset("*_wind_helgoland.nc")# requires `pip install dask`
+ds = xr.open_mfdataset("data1/*_wind_helgoland.nc")# requires `pip install dask`
 
 from numpy import sqrt
 # add absolute wind speed
 ds["windspeed"] = sqrt(ds.u10*ds.u10 + ds.v10*ds.v10)
 
-xr.save_mfdataset([ds], ["helgoland_wind.nc"], mode='a')
+xr.save_mfdataset([ds], ["data1/helgoland_wind.nc"], mode='w')
